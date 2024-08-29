@@ -39,6 +39,8 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 
+import { AssociationComponent } from '@app/association/association.component'
+import { AssociationEditEmailDialogComponent } from '@app/association/association-edit-email-dialog/association-edit-email-dialog.component'
 @NgModule({
     declarations: [
         AppComponent,
@@ -67,7 +69,9 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SidebarComponent,
         SidebarLogoComponent,
         SidebarUserPanelComponent,
-        SidebarMenuComponent
+        SidebarMenuComponent,
+        AssociationComponent,
+        AssociationEditEmailDialogComponent
     ],
     imports: [
         CommonModule,

@@ -1,0 +1,66 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editUserModal="ngForm"
+  (ngSubmit)="save()"
+>
+<abp-modal-header
+    [title]="'Edit Association Email' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <tabset>
+      <tab [heading]="'UserDetails' | localize" class="pt-3 px-2">
+        <div class="form-group row required">
+            <label class="col-md-2 col-form-label" for="emailAddress">
+              {{ "EmailAddress" | localize }}
+            </label>
+            <div class="col-md-3">
+              <input
+                type="email"
+                class="form-control"
+                name="emailAddress"
+                id="emailAddress"
+                required
+                maxlength="256"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+                [(ngModel)]="user.emailAddress"
+                #emailAddressModel="ngModel"
+                #emailAddressEl
+              />
+              <abp-validation-summary
+                [control]="emailAddressModel"
+                [controlEl]="emailAddressEl"
+              ></abp-validation-summary>
+            </div>
+            <label class="col-md-2 col-form-label" for="newEmailAddress">
+              {{ "New E-mail" | localize }}
+            </label>
+            <div class="col-md-3">
+              <input
+                type="email"
+                class="form-control"
+                name="newEmailAddress"
+                id="newEmailAddress"
+                required
+                maxlength="256"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+                [(ngModel)]="newUser.emailAddress"
+                #newEmailAddressModel="ngModel"
+                #newEmailAddressEl
+              />
+              <abp-validation-summary
+                [control]="newEmailAddressModel"
+                [controlEl]="newEmailAddressEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+      </tab>
+    </tabset>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editUserModal.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>  
+</form>

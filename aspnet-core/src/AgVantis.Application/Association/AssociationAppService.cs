@@ -39,7 +39,6 @@ namespace AgVantis.Association
             var result = a.Where(x => x.EmailAddress == changeAssociationEmail.CurrentEmailAddress).FirstOrDefault();
             if (result != null)
             {
-                result.LastModificationTime = DateTime.UtcNow;
                 result.EmailAddress = changeAssociationEmail.NewEmailAddress;
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
